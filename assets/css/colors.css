@@ -1,0 +1,19 @@
+:root{
+    --color-light: #e6e6e6;
+    --color-light2: #919297;
+    --color-secondary: #46c046;
+    --color-linkedin-blue: #0e65c2;
+    --color-dusk: #292d33;
+    --color-midnight: #1a1c20;
+    --color-black: #111;
+}
+
+body
+{
+    background-color:var(--color-midnight); 
+    color:var(--color-light)
+}
+
+.color-light{color: var(--color-light);}
+.color-light2{color: var(--color-light2);}
+.color-secondary{color: var(--color-secondary)}
