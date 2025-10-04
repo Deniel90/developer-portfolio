@@ -117,6 +117,26 @@ i, em {
   --sidebar-width: 220px;
   --sidebar-avatar-size: 60px;
 }
+
+body {
+  cursor: none;
+}
+/* #endregion */
+
+/* #region CURSOR */
+#cursor-container{
+  width: 0px;
+  height: 0px;
+  position: fixed;
+  z-index: 2;
+  pointer-events: none;
+}
+
+#cursor-visual{
+  width: 30px;
+  height: 30px;
+  position: fixed;
+}
 /* #endregion */
 
 /* #region SIDEBAR */
@@ -159,7 +179,6 @@ i, em {
   color: var(--color-light);
   font-size: 1rem;
   transition: 0.1s;
-  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -207,7 +226,6 @@ i, em {
   object-fit: cover;
   border: 1px solid var(--color-light2);
   background-color: var(--color-dusk);
-  cursor: pointer;
   position: fixed;
   top: 52px;
   left: calc(var(--sidebar-width) - calc(var(--sidebar-avatar-size) / 2));
@@ -286,7 +304,6 @@ section hr {
 #welcome{
   height: 600px;
   padding-top: 12em;
-  cursor: none;
 }
 
 .welcome-container{

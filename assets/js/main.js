@@ -12,6 +12,9 @@ let modalExitBtn;
 let projectPlayer;
 let pointerIsInSectionOne;
 
+let cursorContainer;
+let cursorVisual;
+
 // #region EVENTS
 document.addEventListener('DOMContentLoaded', () => {
 	GenerateWelcomeText();
@@ -26,6 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	modalExitBtn = document.querySelector(".modal-exit-button");
 	modalExitBtn.onclick = function() {CloseModal()};
 	projectPlayer = document.querySelector("#project-player");
+
+	cursorContainer = document.querySelector("#cursor-container");
+	cursorVisual = document.querySelector("#cursor-visual");
+
+
+	// todo: to separate method
+	setInterval(() => {
+		mouseDistance -= 0.2;
+		if (mouseDistance < 0) mouseDistance = 0;
+		// chromatic aberration effect
+		let colorIntensityInHex = Math.floor(255 - (mouseDistance / 4 * 255)).toString(16);
+		let leftColor = `#${colorIntensityInHex}FFFF`;
+		let rightColor = `#FF${colorIntensityInHex}${colorIntensityInHex}`;
+		cursorVisual.style.filter = `invert(90%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)
+			drop-shadow(${-mouseDistance}px 0 0 ${leftColor}) drop-shadow(${mouseDistance}px 0 0 ${rightColor})`;
+	}, 4);
 });
 
 window.addEventListener("scroll", () => {
@@ -36,9 +55,16 @@ window.addEventListener("scroll", () => {
 	VideoBoxesSlideIn();
 });
 
+
+let mouseDistance = 0.0;
 document.addEventListener('mousemove', (event) => {
 	mousePos.x = event.clientX;
 	mousePos.y = event.clientY;
+
+	// chromatic aberration effect
+	mouseDistance += 1;
+	if (mouseDistance > 4) mouseDistance = 4;
+
 
 	HandlePointerGlow();
 	RefreshWelcomeText();
@@ -84,6 +110,12 @@ function CloseModal()
 
 function HandlePointerGlow()
 {
+	// cursor
+	cursorContainer.style.top = (mousePos.y - 2) + "px";
+	cursorContainer.style.left = (mousePos.x - 7) + "px";
+
+
+
 	if (pointerGlow == undefined) return;
 	pointerIsInSectionOne = (sections[1].offsetTop - mousePos.y - pageYOffset) > 0;
 	if (!pointerIsInSectionOne)
