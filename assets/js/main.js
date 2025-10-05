@@ -14,6 +14,8 @@ let pointerIsInSectionOne;
 
 let cursorContainer;
 let cursorVisual;
+let linksOfCustomCursor;
+let cursorPulse;
 
 // #region EVENTS
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	cursorContainer = document.querySelector("#cursor-container");
 	cursorVisual = document.querySelector("#cursor-visual");
+ 	linksOfCustomCursor = document.getElementsByClassName("custom-cursor-pointer");
+	cursorPulse = document.querySelector("#cursor-container .pulse");
 
+	// hide by default
+	cursorPulse.classList.remove("pulse");
 
 	// todo: to separate method
 	setInterval(() => {
@@ -42,9 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		let colorIntensityInHex = Math.floor(255 - (mouseDistance / 4 * 255)).toString(16);
 		let leftColor = `#${colorIntensityInHex}FFFF`;
 		let rightColor = `#FF${colorIntensityInHex}${colorIntensityInHex}`;
-		cursorVisual.style.filter = `invert(90%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%)
-			drop-shadow(${-mouseDistance}px 0 0 ${leftColor}) drop-shadow(${mouseDistance}px 0 0 ${rightColor})`;
+		cursorVisual.style.filter = `invert(10%)
+									 drop-shadow(${-mouseDistance}px 0 0 ${leftColor}) 
+									 drop-shadow(${mouseDistance}px 0 0 ${rightColor})`;
 	}, 4);
+
+
+	for (var i = 0; i < linksOfCustomCursor.length; i++) {
+		linksOfCustomCursor[i].addEventListener('pointerenter', () => {
+			cursorVisual.src = "assets/img/global/cursor-link.png";
+			cursorPulse.classList.add("pulse");
+		});
+		linksOfCustomCursor[i].addEventListener('pointerleave', () => {
+			cursorVisual.src = "assets/img/global/cursor.png";
+			cursorPulse.classList.remove("pulse");
+		});
+	}
+
 });
 
 window.addEventListener("scroll", () => {

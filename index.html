@@ -38,6 +38,7 @@
   <!-- Cursor -->
   <div id="cursor-container">
     <img id="cursor-visual" src="assets/img/global/cursor.png">
+    <div class="pulse"></div>
   </div>
 
   <!-- SIDE NAVIGATION BAR -->
@@ -45,26 +46,26 @@
     <div class="reflected-text namebox">
       <span class="color-light name-text">Dániel</span> <span class="color-secondary name-text">Rendek</span>
     </div>
-    <img class="sidebar-avatar" src="./assets/img/global/monogram_logo.png" alt="Name" />
+    <img class="sidebar-avatar custom-cursor-pointer" src="./assets/img/global/monogram_logo.png" alt="Name" />
     <span class="horizontal-line"></span>
 
     <ul>
-      <li class="nav-text welcome active">
+      <li class="nav-text custom-cursor-pointer welcome active">
         <svg class="sidenav-icon" fill="#ffffff" viewBox="0 0 56 56"><path d="M 25.1289 53.5117 C 33.3789 53.5117 39.1680 49.0352 42.2851 40.2461 L 46.4102 28.6445 C 47.4414 25.7149 46.5039 23.3008 44.0664 22.4102 C 41.8867 21.6133 39.7305 22.5508 38.6992 24.9649 L 37.1758 28.7149 C 37.1289 28.8086 37.0586 28.8789 36.9649 28.8789 C 36.8476 28.8789 36.8008 28.7852 36.8008 28.6680 L 36.8008 9.8711 C 36.8008 7.1289 35.0898 5.4180 32.4649 5.4180 C 31.5039 5.4180 30.6367 5.7461 29.9805 6.3555 C 29.6758 3.9649 28.1289 2.4883 25.8086 2.4883 C 23.5351 2.4883 21.9414 4.0117 21.5898 6.3086 C 21.0039 5.7227 20.1602 5.4180 19.3164 5.4180 C 16.8789 5.4180 15.2617 7.1055 15.2617 9.7071 L 15.2617 12.3086 C 14.6289 11.6524 13.6914 11.3008 12.6836 11.3008 C 10.2461 11.3008 8.5586 13.1055 8.5586 15.7305 L 8.5586 35.8633 C 8.5586 46.8320 15.2149 53.5117 25.1289 53.5117 Z M 25.0117 50.2539 C 16.7149 50.2539 11.6524 44.9336 11.6524 35.4883 L 11.6524 16.0586 C 11.6524 15.0742 12.2851 14.3711 13.2695 14.3711 C 14.2305 14.3711 14.9336 15.0742 14.9336 16.0586 L 14.9336 28.0352 C 14.9336 28.9024 15.6367 29.4883 16.3867 29.4883 C 17.1836 29.4883 17.9102 28.9024 17.9102 28.0352 L 17.9102 10.1289 C 17.9102 9.1211 18.5430 8.4414 19.5039 8.4414 C 20.4883 8.4414 21.1680 9.1211 21.1680 10.1289 L 21.1680 26.8398 C 21.1680 27.7071 21.8711 28.2930 22.6445 28.2930 C 23.4414 28.2930 24.1680 27.7071 24.1680 26.8398 L 24.1680 7.2227 C 24.1680 6.2383 24.8242 5.5117 25.8086 5.5117 C 26.7461 5.5117 27.4258 6.2383 27.4258 7.2227 L 27.4258 26.8398 C 27.4258 27.6602 28.0820 28.2930 28.9024 28.2930 C 29.6992 28.2930 30.4024 27.6602 30.4024 26.8398 L 30.4024 10.1289 C 30.4024 9.1211 31.0820 8.4414 32.0430 8.4414 C 33.0273 8.4414 33.6836 9.1211 33.6836 10.1289 L 33.6836 33.1914 C 33.6836 34.2695 34.3633 35.0430 35.3476 35.0430 C 36.1914 35.0430 36.8945 34.6680 37.4336 33.4961 L 40.6211 26.3711 C 41.0430 25.3633 41.8867 24.8476 42.7539 25.1758 C 43.6914 25.5508 44.0195 26.4414 43.5742 27.6602 L 39.4258 39.2383 C 36.5664 47.2305 31.5508 50.2539 25.0117 50.2539 Z"/></svg>
         <a href="#welcome">Welcome</a>
       </li>
-      <li class="nav-text about">
+      <li class="nav-text custom-cursor-pointer about">
         <svg class="sidenav-icon" fill="#ffffff" viewBox="0 0 512 512"><path d="M213.333333,3.55271368e-14 C95.51296,3.55271368e-14 3.55271368e-14,95.51168 3.55271368e-14,213.333333 C3.55271368e-14,331.153707 95.51296,426.666667 213.333333,426.666667 C331.154987,426.666667 426.666667,331.153707 426.666667,213.333333 C426.666667,95.51168 331.154987,3.55271368e-14 213.333333,3.55271368e-14 Z M213.333333,384 C119.227947,384 42.6666667,307.43872 42.6666667,213.333333 C42.6666667,119.227947 119.227947,42.6666667 213.333333,42.6666667 C307.44,42.6666667 384,119.227947 384,213.333333 C384,307.43872 307.44,384 213.333333,384 Z M240.04672,128 C240.04672,143.46752 228.785067,154.666667 213.55008,154.666667 C197.698773,154.666667 186.713387,143.46752 186.713387,127.704107 C186.713387,112.5536 197.99616,101.333333 213.55008,101.333333 C228.785067,101.333333 240.04672,112.5536 240.04672,128 Z M192.04672,192 L234.713387,192 L234.713387,320 L192.04672,320 L192.04672,192 Z"></path></svg>
         <a href="#about">About</a>
       </li>
-      <li class="nav-text company">
+      <li class="nav-text custom-cursor-pointer company">
         <svg class="sidenav-icon" fill="#ffffff" viewBox="0 0 1024 1024"><path d="M192 128v704h384V128H192zm-32-64h448a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32z"/><path d="M256 256h256v64H256v-64zm0 192h256v64H256v-64zm0 192h256v64H256v-64zm384-128h128v64H640v-64zm0 128h128v64H640v-64zM64 832h896v64H64v-64z"/><path d="M640 384v448h192V384H640zm-32-64h256a32 32 0 0 1 32 32v512a32 32 0 0 1-32 32H608a32 32 0 0 1-32-32V352a32 32 0 0 1 32-32z"/></svg>
         <a href="#company">Company projects</a></li>
-      <li class="nav-text laboratory">
+      <li class="nav-text custom-cursor-pointer laboratory">
         <svg class="sidenav-icon" fill="#ffffff" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 3V7.58152C17.9318 8.76829 20 11.6426 20 15C20 19.4183 16.4183 23 12 23C7.58172 23 4 19.4183 4 15C4 11.6426 6.06817 8.76829 9 7.58152V3H8C7.44772 3 7 2.55228 7 2C7 1.44772 7.44772 1 8 1H16C16.5523 1 17 1.44772 17 2C17 2.55228 16.5523 3 16 3H15ZM9.75043 9.43539L10.3752 9.18249C10.7529 9.02962 11 8.66295 11 8.25555V3H13V8.25555C13 8.66295 13.2471 9.02962 13.6248 9.18249L14.2496 9.43539C15.1075 9.78268 15.8661 10.3221 16.4726 11L7.52739 11C8.13388 10.3221 8.89249 9.78268 9.75043 9.43539ZM6.3414 13C6.12025 13.6258 6 14.2991 6 15C6 18.3137 8.68629 21 12 21C15.3137 21 18 18.3137 18 15C18 14.2991 17.8798 13.6258 17.6586 13L6.3414 13Z"/></svg>
         <a href="#laboratory">Laboratory</a>
       </li>
-      <li class="nav-text contact">
+      <li class="nav-text custom-cursor-pointer contact">
         <svg class="sidenav-icon" fill="#ffffff" viewBox="0 0 24 24"><path d="M20,1H4A1,1,0,0,0,3,2V22a1,1,0,0,0,1,1H20a1,1,0,0,0,1-1V2A1,1,0,0,0,20,1ZM19,21H5V3H19ZM9,8.5a3,3,0,1,1,3,3A3,3,0,0,1,9,8.5Zm-2,9a5,5,0,0,1,10,0,1,1,0,0,1-2,0,3,3,0,0,0-6,0,1,1,0,0,1-2,0Z"/></svg>
         <a href="#contact">Contact</a>
       </li>
@@ -207,7 +208,7 @@
       <div class="laboratory-section">
 
         <!-- Cardboard slicer -->
-        <div class="project-preview" onclick="OpenModal('https://itch.io/embed-upload/14987664?color=292d33', 'Cardboard slicer')">
+        <div class="project-preview custom-cursor-pointer" onclick="OpenModal('https://itch.io/embed-upload/14987664?color=292d33', 'Cardboard slicer')">
           <img src="./assets/img/project-preview/cardboardslicer.jpg" alt="preview">
           <span>Cardboard slicer</span>
         </div>
@@ -240,7 +241,7 @@
             <img class="card-icon-linkedin" src="./assets/img/global/linkedin-icon.png" alt="">
           </div>
           <div class="slide slide-bottom">
-            <a class="card-link" href="https://www.linkedin.com/in/daniel-rendek-b9a545237/" target="_blank">Check my LinkedIn profile</a>
+            <a class="card-link custom-cursor-pointer" href="https://www.linkedin.com/in/daniel-rendek-b9a545237/" target="_blank">Check my LinkedIn profile</a>
           </div>
         </div>
   
@@ -250,7 +251,7 @@
             <img class="card-icon-fancy" src="./assets/img/global/cv-icon_fancy.png" alt="">
           </div>
           <div class="slide slide-bottom">
-            <a class="card-link" href="" target="_blank">Download my fancy CV from here</a>
+            <a class="card-link custom-cursor-pointer" href="" target="_blank">Download my fancy CV from here</a>
           </div>
         </div>
 
@@ -260,7 +261,7 @@
             <img class="card-icon-europass" src="./assets/img/global/cv-icon-europass.png" alt="">
           </div>
           <div class="slide slide-bottom">
-            <a class="card-link" href="" target="_blank">Download my Europass CV from here</a>
+            <a class="card-link custom-cursor-pointer" href="" target="_blank">Download my Europass CV from here</a>
           </div>
         </div>
       
@@ -273,7 +274,7 @@
       <div class="modal-background-blur"></div>
       <div class="modal-window">
         <div class="modal-title">title</div>
-        <span class="modal-exit-button">X</span>
+        <span class="modal-exit-button custom-cursor-pointer">X</span>
         <iframe id="project-player" src="" width="800" height="600">
         </iframe>
       </div>
