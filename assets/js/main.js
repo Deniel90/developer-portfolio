@@ -1,5 +1,4 @@
 let mousePos = { x: 0, y: 0 };
-let pointerGlow;
 let sections;
 let bouncyLetters;
 let currentSection;
@@ -10,8 +9,6 @@ let modal;
 let modalTitle;
 let modalExitBtn;
 let projectPlayer;
-let pointerIsInSectionOne;
-
 let cursorContainer;
 let cursorVisual;
 let linksOfCustomCursor;
@@ -20,7 +17,6 @@ let cursorPulse;
 // #region EVENTS
 document.addEventListener('DOMContentLoaded', () => {
 	GenerateWelcomeText();
-	pointerGlow = document.querySelector("#pointer-glow");
 	sections = document.querySelectorAll("section");
 	bouncyLetters = document.querySelectorAll(".bouncy-letter");
 	skillGrids = document.querySelectorAll(".skill-grid");
@@ -31,44 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	modalExitBtn = document.querySelector(".modal-exit-button");
 	modalExitBtn.onclick = function() {CloseModal()};
 	projectPlayer = document.querySelector("#project-player");
-
-	cursorContainer = document.querySelector("#cursor-container");
-	cursorVisual = document.querySelector("#cursor-visual");
- 	linksOfCustomCursor = document.getElementsByClassName("custom-cursor-pointer");
-	cursorPulse = document.querySelector("#cursor-container .pulse");
-
-	// hide by default
-	cursorPulse.classList.remove("pulse");
-
-	// todo: to separate method
-	setInterval(() => {
-		mouseDistance -= 0.2;
-		if (mouseDistance < 0) mouseDistance = 0;
-		// chromatic aberration effect
-		let colorIntensityInHex = Math.floor(255 - (mouseDistance / 4 * 255)).toString(16);
-		let leftColor = `#${colorIntensityInHex}FFFF`;
-		let rightColor = `#FF${colorIntensityInHex}${colorIntensityInHex}`;
-		cursorVisual.style.filter = `invert(10%)
-									 drop-shadow(${-mouseDistance}px 0 0 ${leftColor}) 
-									 drop-shadow(${mouseDistance}px 0 0 ${rightColor})`;
-	}, 4);
-
-
-	for (var i = 0; i < linksOfCustomCursor.length; i++) {
-		linksOfCustomCursor[i].addEventListener('pointerenter', () => {
-			cursorVisual.src = "assets/img/global/cursor-link.png";
-			cursorPulse.classList.add("pulse");
-		});
-		linksOfCustomCursor[i].addEventListener('pointerleave', () => {
-			cursorVisual.src = "assets/img/global/cursor.png";
-			cursorPulse.classList.remove("pulse");
-		});
-	}
-
+	InitCursor();
 });
 
 window.addEventListener("scroll", () => {
-	HandlePointerGlow();
+	HandleCursorPosition();
 	RefreshWelcomeText();
 	RefreshSidebarHighlight();
 	SkillGridElementsFadeIn();
@@ -85,8 +48,7 @@ document.addEventListener('mousemove', (event) => {
 	mouseDistance += 1;
 	if (mouseDistance > 4) mouseDistance = 4;
 
-
-	HandlePointerGlow();
+	HandleCursorPosition();
 	RefreshWelcomeText();
 	RotateProjectPreviews();
 });
@@ -128,32 +90,51 @@ function CloseModal()
 }
 
 
-function HandlePointerGlow()
+function InitCursor()
 {
-	// cursor
+	cursorContainer = document.querySelector("#cursor-container");
+	cursorVisual = document.querySelector("#cursor-visual");
+ 	linksOfCustomCursor = document.getElementsByClassName("custom-cursor-pointer");
+	cursorPulse = document.querySelector("#cursor-container .pulse");
+
+	// hide by default
+	cursorPulse.classList.remove("pulse");
+
+	// update visual
+	setInterval(() => {
+		mouseDistance -= 0.2;
+		if (mouseDistance < 0) mouseDistance = 0;
+		// chromatic aberration effect
+		let colorIntensityInHex = Math.floor(255 - (mouseDistance / 4 * 255)).toString(16);
+		let leftColor = `#${colorIntensityInHex}FFFF`;
+		let rightColor = `#FF${colorIntensityInHex}${colorIntensityInHex}`;
+		cursorVisual.style.filter = `invert(10%)
+									 drop-shadow(${-mouseDistance}px 0 0 ${leftColor}) 
+									 drop-shadow(${mouseDistance}px 0 0 ${rightColor})`;
+	}, 4);
+
+	// toggle pulse effect
+	for (var i = 0; i < linksOfCustomCursor.length; i++) {
+		linksOfCustomCursor[i].addEventListener('pointerenter', () => {
+			cursorVisual.src = "assets/img/global/cursor-link.png";
+			cursorPulse.classList.add("pulse");
+		});
+		linksOfCustomCursor[i].addEventListener('pointerleave', () => {
+			cursorVisual.src = "assets/img/global/cursor.png";
+			cursorPulse.classList.remove("pulse");
+		});
+	}
+}
+
+function HandleCursorPosition()
+{
 	cursorContainer.style.top = (mousePos.y - 2) + "px";
 	cursorContainer.style.left = (mousePos.x - 7) + "px";
-
-
-
-	if (pointerGlow == undefined) return;
-	pointerIsInSectionOne = (sections[1].offsetTop - mousePos.y - pageYOffset) > 0;
-	if (!pointerIsInSectionOne)
-	{
-		pointerGlow.style.opacity = 0;
-		return;
-	}
-
-	pointerGlow.style.top = (mousePos.y - 50) + "px";
-	pointerGlow.style.left = (mousePos.x - 50) + "px";
-
-	var opac = (sections[1].offsetTop - mousePos.y - pageYOffset) / 100 * 0.1;
-	if (opac > 0.1) opac = 0.1;
-	pointerGlow.style.opacity = opac;
 }
 
 function RefreshWelcomeText()
 {
+	pointerIsInSectionOne = (sections[1].offsetTop - mousePos.y - pageYOffset) > 0;
 	if (!pointerIsInSectionOne) return;
 
 	for (let i = 0; i < bouncyLetters.length; i++) {

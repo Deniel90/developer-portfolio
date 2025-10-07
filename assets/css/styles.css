@@ -340,19 +340,6 @@ section hr {
   letter-spacing: 10px;
   opacity: 1;
 }
-
-#pointer-glow{
-  background-color: var(--color-secondary);
-  width: 100px;
-  height: 100px;
-  position: fixed;
-  border-radius: 50%;
-  opacity: 0.1;
-  top: 42px;
-  left: calc(var(--sidebar-width) - 50px);
-  box-shadow: 0px 0px 50px 45px var(--color-secondary);
-  z-index: -1;
-}
 /* #endregion */
 
 /* #region ABOUT ME */
