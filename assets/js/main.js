@@ -1,3 +1,4 @@
+let isMobileVersion;
 let mousePos = { x: 0, y: 0 };
 let sections;
 let bouncyLetters;
@@ -16,6 +17,7 @@ let cursorPulse;
 
 // #region EVENTS
 document.addEventListener('DOMContentLoaded', () => {
+	DetectMobile();
 	GenerateWelcomeText();
 	sections = document.querySelectorAll("section");
 	bouncyLetters = document.querySelectorAll(".bouncy-letter");
@@ -53,6 +55,11 @@ document.addEventListener('mousemove', (event) => {
 	RotateProjectPreviews();
 });
 // #endregion EVENTS
+
+function DetectMobile()
+{
+	isMobileVersion = window.navigator.userAgentData.mobile;
+}
 
 function GenerateWelcomeText()
 {
@@ -93,6 +100,12 @@ function CloseModal()
 function InitCursor()
 {
 	cursorContainer = document.querySelector("#cursor-container");
+	if (isMobileVersion) 
+	{
+		cursorContainer.style.display = "none";
+		return;
+	}
+
 	cursorVisual = document.querySelector("#cursor-visual");
  	linksOfCustomCursor = document.getElementsByClassName("custom-cursor-pointer");
 	cursorPulse = document.querySelector("#cursor-container .pulse");
@@ -128,6 +141,8 @@ function InitCursor()
 
 function HandleCursorPosition()
 {
+	if (isMobileVersion) return;
+
 	cursorContainer.style.top = (mousePos.y - 2) + "px";
 	cursorContainer.style.left = (mousePos.x - 7) + "px";
 }
